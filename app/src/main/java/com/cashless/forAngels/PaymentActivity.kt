@@ -4,17 +4,16 @@ import android.nfc.NfcAdapter
 import android.os.Bundle
 import com.cashless.forAngels.service.AngelService
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_scan.*
 import javax.inject.Inject
 
 
-class ScanActivity : DaggerAppCompatActivity() {
+class PaymentActivity : DaggerAppCompatActivity() {
 
     @Inject lateinit var angelService: AngelService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scan)
+        setContentView(R.layout.activity_payment)
 
         var alias = ""
         intent?.let {
@@ -22,7 +21,6 @@ class ScanActivity : DaggerAppCompatActivity() {
                 alias = it.data.getQueryParameter("card")
         }
 
-        scanned.text = alias
     }
 
 }

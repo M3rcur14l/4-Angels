@@ -20,7 +20,7 @@ class HomeActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         testPay.setOnClickListener { pay() }
-        testScan.setOnClickListener { startActivity(Intent(this, ScanActivity::class.java)) }
+        testScan.setOnClickListener { startActivity(Intent(this, PaymentActivity::class.java)) }
     }
 
     private fun pay() {
