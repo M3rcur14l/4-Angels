@@ -4,6 +4,7 @@ import com.cashless.forAngels.Application
 import com.cashless.forAngels.di.module.ActivityBindingModule
 import com.cashless.forAngels.di.module.ApplicationModule
 import com.cashless.forAngels.di.module.NetworkModule
+import com.cashless.forAngels.di.module.ServiceModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -15,7 +16,8 @@ import javax.inject.Singleton
         ApplicationModule::class,
         AndroidSupportInjectionModule::class,
         ActivityBindingModule::class,
-        NetworkModule::class))
+        NetworkModule::class,
+        ServiceModule::class))
 interface AppComponent : AndroidInjector<Application> {
 
     override fun inject(app: Application)

@@ -1,12 +1,9 @@
 package com.cashless.forAngels.di.module
 
-import com.cashless.forAngels.Application
-import com.cashless.forAngels.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import it.icbpi.XPaySDK.XPay
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -30,7 +27,7 @@ class NetworkModule {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
-            .baseUrl("")
+            .baseUrl("https://4angels.azurewebsites.net")
             .build()
 
 }
