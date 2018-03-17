@@ -2,13 +2,17 @@ package com.cashless.forAngels
 
 import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity
+import it.icbpi.XPaySDK.CallBacks.FrontOfficeQPCallback
+import it.icbpi.XPaySDK.Models.WebApi.Requests.FrontOffice.ApiFrontOfficeQPRequest
+import it.icbpi.XPaySDK.Models.WebApi.Responses.FrontOffice.ApiFrontOfficeQPResponse
+import it.icbpi.XPaySDK.Utils.EnvironmentUtils
+import it.icbpi.XPaySDK.Utils.QPUtils.CurrencyUtilsQP
 import it.icbpi.XPaySDK.XPay
 import kotlinx.android.synthetic.main.activity_home.*
-import javax.inject.Inject
+import java.util.*
+
 
 class HomeActivity : DaggerAppCompatActivity() {
-
-    @Inject lateinit var xpay: XPay
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +22,25 @@ class HomeActivity : DaggerAppCompatActivity() {
     }
 
     private fun pay() {
+        val xpay = XPay(this, BuildConfig.XPAY_SECRET)
+        xpay.FrontOffice.setEnvironment(EnvironmentUtils.Environment.INTEG)
+        val request = ApiFrontOfficeQPRequest(
+                BuildConfig.XPAY_ALIAS,
+                UUID.randomUUID().toString(),
+                CurrencyUtilsQP.EUR,
+                1000)
+        xpay.FrontOffice.paga(request, object : FrontOfficeQPCallback {
+            override fun onConfirm(apiFrontOfficeQPResponse: ApiFrontOfficeQPResponse) {
+                if (apiFrontOfficeQPResponse.isValid) {
 
+                } else {
+
+                }
+            }
+
+            override fun onCancel(apiFrontOfficeQPResponse: ApiFrontOfficeQPResponse) {
+
+            }
+        })
     }
 }

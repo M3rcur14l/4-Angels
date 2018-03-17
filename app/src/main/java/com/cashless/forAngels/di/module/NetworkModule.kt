@@ -1,6 +1,7 @@
 package com.cashless.forAngels.di.module
 
 import com.cashless.forAngels.Application
+import com.cashless.forAngels.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -31,9 +32,5 @@ class NetworkModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
             .baseUrl("")
             .build()
-
-    @Singleton
-    @Provides
-    internal fun providesXPay(context: Application) = XPay(context, "")
 
 }

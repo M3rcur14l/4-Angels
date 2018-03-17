@@ -15,6 +15,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug{
+            buildConfigField "String", "XPAY_SECRET", "\"RY35SSHRVGZFG1ZP56CDJOGG8XVGXBN2\""
+            buildConfigField "String", "XPAY_ALIAS", "\"ALIAS_WEB_00005073\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
