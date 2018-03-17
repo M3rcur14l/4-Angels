@@ -1,5 +1,6 @@
 package com.cashless.forAngels
 
+import android.content.Intent
 import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity
 import it.icbpi.XPaySDK.CallBacks.FrontOfficeQPCallback
@@ -18,15 +19,16 @@ class HomeActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        testButton.setOnClickListener { pay() }
+        testPay.setOnClickListener { pay() }
+        testScan.setOnClickListener { startActivity(Intent(this, ScanActivity::class.java)) }
     }
 
     private fun pay() {
         val xpay = XPay(this, BuildConfig.XPAY_SECRET)
-        xpay.FrontOffice.setEnvironment(EnvironmentUtils.Environment.INTEG)
+        xpay.FrontOffice.setEnvironment(EnvironmentUtils.Environment.TEST)
         val request = ApiFrontOfficeQPRequest(
                 BuildConfig.XPAY_ALIAS,
-                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString().substring(0, 20),
                 CurrencyUtilsQP.EUR,
                 1000)
         xpay.FrontOffice.paga(request, object : FrontOfficeQPCallback {

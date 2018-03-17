@@ -17,7 +17,7 @@ android {
     buildTypes {
         debug{
             buildConfigField "String", "XPAY_SECRET", "\"RY35SSHRVGZFG1ZP56CDJOGG8XVGXBN2\""
-            buildConfigField "String", "XPAY_ALIAS", "\"ALIAS_WEB_00005073\""
+            buildConfigField "String", "XPAY_ALIAS", "\"3444153\""
         }
         release {
             minifyEnabled false

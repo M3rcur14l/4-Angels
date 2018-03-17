@@ -1,6 +1,7 @@
 package com.cashless.forAngels.di.module
 
 import com.cashless.forAngels.HomeActivity
+import com.cashless.forAngels.ScanActivity
 import com.cashless.forAngels.di.scope.ActivityScoped
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -15,4 +16,8 @@ abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector
     abstract fun homeActivity(): HomeActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract fun scanActivity(): ScanActivity
 }
