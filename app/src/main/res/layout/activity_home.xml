@@ -5,84 +5,29 @@
     android:layout_height="match_parent"
     android:background="#e0e0e0">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/donateButton"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_background"
+        android:elevation="2dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Ciao Angel!"
-        android:textColor="@color/old_lavender"
-        android:textSize="27sp"
+        android:text="Fai una donazione"
+        android:textColor="@android:color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/subtitle"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/transactionRecycler"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="Quanto sei pronto, siamo pronti a scannerizzare un tag"
-        android:textColor="@color/old_lavender"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
-
-    <ImageView
-        android:id="@+id/readyForScan"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subtitle"
-        app:srcCompat="@drawable/circle_icon" />
-
-    <TextView
-        android:id="@+id/listening"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="In ascolto..."
-        android:textColor="@color/old_lavender"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@id/readyForScan"
-        app:layout_constraintLeft_toLeftOf="@id/readyForScan"
-        app:layout_constraintRight_toRightOf="@id/readyForScan"
-        app:layout_constraintTop_toTopOf="@id/readyForScan" />
-
-    <include
-        android:id="@+id/orDivider"
-        layout="@layout/or_divider"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/readyForScan" />
-
-    <Button
-        android:id="@+id/donationButtonHigh"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_height="0dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_background"
-        android:elevation="2dp"
-        android:fontFamily="sans-serif-medium"
-        android:foreground="@drawable/qr_code_icon"
-        android:textColor="@android:color/white"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/orDivider" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/donateButton" />
 
 </android.support.constraint.ConstraintLayout>

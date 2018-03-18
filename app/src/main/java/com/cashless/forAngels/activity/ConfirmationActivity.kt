@@ -1,14 +1,14 @@
-package com.cashless.forAngels
+package com.cashless.forAngels.activity
 
 import android.os.Bundle
+import com.cashless.forAngels.R
 import dagger.android.support.DaggerAppCompatActivity
 
-
-class HomeActivity : DaggerAppCompatActivity() {
+class ConfirmationActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_confirmation)
     }
 
 }

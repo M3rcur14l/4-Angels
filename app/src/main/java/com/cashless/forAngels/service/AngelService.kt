@@ -2,6 +2,7 @@ package com.cashless.forAngels.service
 
 import com.cashless.forAngels.service.request.ConfirmationRequest
 import com.cashless.forAngels.service.response.InfoResponse
+import com.cashless.forAngels.service.response.TransactionsResponse
 import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -20,5 +21,8 @@ interface AngelService {
 
     @POST("confirm")
     fun confirmation(@Body request: ConfirmationRequest): Completable
+
+    @GET("get_transactions")
+    fun getTransactionList(@Query("app") appId: Int): Single<TransactionsResponse>
 
 }

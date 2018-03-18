@@ -15,7 +15,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug{
+        debug {
             buildConfigField "String", "XPAY_SECRET", "\"RY35SSHRVGZFG1ZP56CDJOGG8XVGXBN2\""
             buildConfigField "String", "XPAY_ALIAS", "\"3444153\""
         }
@@ -30,6 +30,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$support_lib_version"
+    implementation "com.android.support:recyclerview-v7:$support_lib_version"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     implementation 'io.reactivex.rxjava2:rxjava:2.1.6'

@@ -1,8 +1,9 @@
 package com.cashless.forAngels.di.module
 
-import com.cashless.forAngels.ConfirmationActivity
-import com.cashless.forAngels.HomeActivity
-import com.cashless.forAngels.PaymentActivity
+import com.cashless.forAngels.activity.ConfirmationActivity
+import com.cashless.forAngels.activity.HomeActivity
+import com.cashless.forAngels.activity.PaymentActivity
+import com.cashless.forAngels.activity.ScanActivity
 import com.cashless.forAngels.di.scope.ActivityScoped
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -20,7 +21,11 @@ abstract class ActivityBindingModule {
 
     @ActivityScoped
     @ContributesAndroidInjector
-    abstract fun scanActivity(): PaymentActivity
+    abstract fun scanActivity(): ScanActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract fun paymentActivity(): PaymentActivity
 
     @ActivityScoped
     @ContributesAndroidInjector

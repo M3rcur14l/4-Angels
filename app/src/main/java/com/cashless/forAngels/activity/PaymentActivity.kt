@@ -1,4 +1,4 @@
-package com.cashless.forAngels
+package com.cashless.forAngels.activity
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
@@ -9,6 +9,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.cashless.forAngels.BuildConfig
+import com.cashless.forAngels.R
 import com.cashless.forAngels.service.AngelService
 import com.cashless.forAngels.service.request.ConfirmationRequest
 import com.cashless.forAngels.service.response.InfoResponse
