@@ -31,8 +31,8 @@
                     android:host="4angels"
                     android:scheme="xpay" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".ConfirmationActivity" />
     </application>
 
 </manifest>

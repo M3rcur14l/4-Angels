@@ -2,19 +2,22 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <Button
         android:id="@+id/donationButtonSmall"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:layout_marginBottom="6dp"
         android:background="@drawable/button_background"
         android:elevation="2dp"
         android:fontFamily="sans-serif-medium"
         android:text="€ 1"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/donationButtonMedium" />
+        app:layout_constraintRight_toLeftOf="@id/donationButtonMedium"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/donationButtonMedium"
@@ -26,8 +29,10 @@
         android:fontFamily="sans-serif-medium"
         android:text="€ 2"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/donationButtonSmall"
         app:layout_constraintLeft_toRightOf="@id/donationButtonSmall"
-        app:layout_constraintRight_toLeftOf="@id/donationButtonHigh" />
+        app:layout_constraintRight_toLeftOf="@id/donationButtonHigh"
+        app:layout_constraintTop_toTopOf="@id/donationButtonSmall" />
 
     <Button
         android:id="@+id/donationButtonHigh"
@@ -39,8 +44,10 @@
         android:fontFamily="sans-serif-medium"
         android:text="€ 5"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/donationButtonSmall"
         app:layout_constraintLeft_toRightOf="@id/donationButtonMedium"
-        app:layout_constraintRight_toLeftOf="@id/donationButtonVeryHigh" />
+        app:layout_constraintRight_toLeftOf="@id/donationButtonVeryHigh"
+        app:layout_constraintTop_toTopOf="@id/donationButtonSmall" />
 
     <Button
         android:id="@+id/donationButtonVeryHigh"
@@ -52,7 +59,9 @@
         android:fontFamily="sans-serif-medium"
         android:text="€ 10"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/donationButtonSmall"
         app:layout_constraintLeft_toRightOf="@id/donationButtonHigh"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/donationButtonSmall" />
 
 </android.support.constraint.ConstraintLayout>

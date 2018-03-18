@@ -2,6 +2,7 @@ package com.cashless.forAngels
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
+import android.content.Intent
 import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.cashless.forAngels.service.AngelService
+import com.cashless.forAngels.service.request.ConfirmationRequest
 import com.cashless.forAngels.service.response.InfoResponse
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -31,6 +33,8 @@ class PaymentActivity : DaggerAppCompatActivity() {
     @Inject lateinit var angelService: AngelService
 
     private var progressDialog: ProgressDialog? = null
+
+    private var idUser: Int = 0
     private var alias: String = ""
     private var donationPercentage: Float = 0.6f
     private var userDonationAmount: Float = 0.0f
@@ -115,14 +119,11 @@ class PaymentActivity : DaggerAppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun updateAmounts() {
-        userDonationTotal.text = "$userDonationAmount €"
-        organizationDonationTotal.text = "$organizationDonationAmount €"
+        userDonationTotal.text = "€ $userDonationAmount".asIterable().take(6).joinToString(separator = "")
+        organizationDonationTotal.text = "€ $organizationDonationAmount".asIterable().take(6).joinToString(separator = "")
     }
 
     private fun onData(response: InfoResponse) {
-        Glide.with(userIcon)
-                .load(response.userImage)
-                .into(userIcon)
         userName.text = response.userName
         Glide.with(organizationIcon)
                 .load(response.organizationImage)
@@ -131,12 +132,16 @@ class PaymentActivity : DaggerAppCompatActivity() {
 
         if (response.organizationPaymentId != null)
             alias = response.organizationPaymentId
+
+        if (response.userId != null)
+            idUser = response.userId
+
         progressDialog?.dismiss()
     }
 
     private fun onError(e: Throwable) {
         progressDialog?.dismiss()
-        Toast.makeText(this, "Errore", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "${e.message}", Toast.LENGTH_LONG).show()
     }
 
     private fun xpay(alias: String, amount: Float) {
@@ -150,6 +155,16 @@ class PaymentActivity : DaggerAppCompatActivity() {
         xpay.FrontOffice.paga(request, object : FrontOfficeQPCallback {
             override fun onConfirm(apiFrontOfficeQPResponse: ApiFrontOfficeQPResponse) {
                 if (apiFrontOfficeQPResponse.isValid) {
+                    angelService.confirmation(ConfirmationRequest(
+                            idUser,
+                            1,
+                            userDonationAmount,
+                            organizationDonationAmount))
+                            .onErrorComplete() //TODO Remove
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe({
+                                startActivity(Intent(this@PaymentActivity, ConfirmationActivity::class.java))
+                            }, { onError(Exception("Error: Acquisto non confermato")) })
 
                 } else
                     onError(Exception("XPay Error: ${apiFrontOfficeQPResponse.error?.message}"))

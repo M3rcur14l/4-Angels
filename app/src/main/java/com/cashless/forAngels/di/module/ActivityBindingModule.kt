@@ -1,5 +1,6 @@
 package com.cashless.forAngels.di.module
 
+import com.cashless.forAngels.ConfirmationActivity
 import com.cashless.forAngels.HomeActivity
 import com.cashless.forAngels.PaymentActivity
 import com.cashless.forAngels.di.scope.ActivityScoped
@@ -20,4 +21,8 @@ abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector
     abstract fun scanActivity(): PaymentActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract fun confirmationActivity(): ConfirmationActivity
 }
