@@ -1,5 +1,6 @@
 package com.cashless.forAngels.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -33,13 +34,14 @@ class HomeActivity : DaggerAppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun onTransactions(response: TransactionsResponse) {
         if (response.transactionList != null) {
             val lm = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
             transactionRecycler.layoutManager = lm
             transactionRecycler.adapter = TransactionListAdapter(response.transactionList)
         }
-
+        total.text = "€ ${response.total}"
     }
 
 }
