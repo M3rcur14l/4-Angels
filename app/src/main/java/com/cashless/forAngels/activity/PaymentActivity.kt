@@ -32,6 +32,10 @@ import javax.inject.Inject
 
 class PaymentActivity : DaggerAppCompatActivity() {
 
+    companion object {
+        const val CARD_ID = "CARD_ID"
+    }
+
     @Inject lateinit var angelService: AngelService
 
     private var progressDialog: ProgressDialog? = null
@@ -54,6 +58,8 @@ class PaymentActivity : DaggerAppCompatActivity() {
         intent?.let {
             if (it.action == NfcAdapter.ACTION_NDEF_DISCOVERED)
                 cardId = it.data.getQueryParameter("card")
+            else if (it.hasExtra(CARD_ID))
+                cardId = it.getStringExtra(CARD_ID)
         }
 
         cardId.isNotEmpty().also {
