@@ -171,7 +171,10 @@ class PaymentActivity : DaggerAppCompatActivity() {
                             .onErrorComplete() //TODO Remove
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({
-                                startActivity(Intent(this@PaymentActivity, ConfirmationActivity::class.java))
+                                val i = Intent(this@PaymentActivity, ConfirmationActivity::class.java)
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                startActivity(i)
+                                finish()
                             }, { onError(Exception("Error: Acquisto non confermato")) })
 
                 } else

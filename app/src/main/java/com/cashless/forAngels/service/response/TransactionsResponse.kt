@@ -8,9 +8,9 @@ import com.google.gson.annotations.SerializedName
  */
 data class TransactionsResponse(
         @SerializedName("lista") val transactionList: List<Transaction>?,
-        @SerializedName("totale") val total: Int?)
+        @SerializedName("totale") val total: Float?)
 
 data class Transaction(
         @SerializedName("data") val date: String?,
         @SerializedName("dest") val userName: String?,
-        @SerializedName("importo") val amount: Int?)
+        @SerializedName("importo") val amount: Float?)
