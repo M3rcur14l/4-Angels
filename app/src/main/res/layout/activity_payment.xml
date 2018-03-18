@@ -7,7 +7,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <include
             android:id="@+id/header"
@@ -57,6 +59,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:hint="5.00€"
+            android:inputType="numberDecimal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/orDivider" />
@@ -83,13 +86,14 @@
             app:layout_constraintTop_toBottomOf="@id/seekBarTitle" />
 
         <Button
-            android:id="@+id/percentageSmall"
+            android:id="@+id/donateButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/button_background"
             android:elevation="2dp"
+            android:enabled="false"
             android:fontFamily="sans-serif-medium"
             android:text="Dona"
             android:textAllCaps="true"

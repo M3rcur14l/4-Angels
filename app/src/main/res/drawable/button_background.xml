@@ -4,12 +4,7 @@
     <item android:gravity="center">
         <shape android:shape="rectangle">
             <corners android:radius="11dp" />
-            <solid android:color="@color/colorAccent" />
-            <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+            <solid android:color="@color/button_selector" />
             <stroke
                 android:width="2dp"
                 android:color="@android:color/white" />
